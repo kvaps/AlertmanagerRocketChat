@@ -77,7 +77,15 @@ curl -X POST -H 'Content-Type: application/json' --data '
 
 ## NOTES
 
-Alertmanager doesn't actually sends singular alerts - it sends array of current alerts, so it doesn't seem possible for now to split then in separate messages, but if you want, you can configure separate alerts/receivers/webhooks.
+Alertmanager doesn't actually sends singular alerts - it sends array of current alerts.  
+To change this behavior you may disable alerts grouping for the route in your `alertmanager.yaml`:
+    
+```yaml
+route:
+  group_by: ['...']
+```
+    
+See [this topic](https://stackoverflow.com/a/61008445/2931267) for more details.
 
 [Alertmanager Docs](https://prometheus.io/docs/alerting/overview/)
 
